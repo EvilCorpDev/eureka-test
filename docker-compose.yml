@@ -1,0 +1,37 @@
+version: "2.4"
+
+services:
+    eureka-test:
+        image: "andrew-loh"
+        volumes:
+          - "./eureka-test/target/eureka.jar:/opt/app.jar"
+        ports:
+          - 8761:8761
+        networks:
+            - test
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:8761/"]
+    eureka-client:
+        image: "andrew-loh"
+        volumes:
+            - "./eureka-client/target/client.jar:/opt/app.jar"
+        networks:
+          - test
+        ports:
+          - 8080
+        depends_on:
+          eureka-test:
+              condition: service_healthy
+    ribbon-server:
+        image: "andrew-loh"
+        volumes:
+            - "./ribbon-server/target/server.jar:/opt/app.jar"
+        networks:
+            - test
+        ports:
+          - 9090:9090
+        depends_on:
+            eureka-test:
+                condition: service_healthy
+networks:
+  test:
