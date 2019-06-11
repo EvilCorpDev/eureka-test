@@ -7,11 +7,17 @@ server:
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://${registry.host:eureka-test}:${registry.port:8761}/eureka/
+            defaultZone: "http://localhost:${registry.port:8761}/eureka/"
         healthcheck:
             enabled: true
-        eureka-service-url-poll-interval-seconds: 1
+        eureka-service-url-poll-interval-seconds: 15
 logging:
     level:
         com:
             netflix: debug
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 10000
+                readTimeout: 10000

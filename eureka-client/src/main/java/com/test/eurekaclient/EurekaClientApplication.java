@@ -9,19 +9,18 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAut
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
-		HibernateJpaAutoConfiguration.class,
-		SecurityAutoConfiguration.class,
-		SecurityFilterAutoConfiguration.class,
-		ThymeleafAutoConfiguration.class,
-		UserDetailsServiceAutoConfiguration.class})
+        HibernateJpaAutoConfiguration.class,
+        SecurityAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class,
+        ThymeleafAutoConfiguration.class,
+        UserDetailsServiceAutoConfiguration.class})
 @EnableDiscoveryClient
-	public class EurekaClientApplication {
+public class EurekaClientApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EurekaClientApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientApplication.class, args);
+    }
 
 }

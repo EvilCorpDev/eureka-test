@@ -2,5 +2,5 @@
 Compose.iml
 .gitignore
 eureka-client
-eureka-test
+eureka-server
 ribbon-server
